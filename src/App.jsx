@@ -5,9 +5,13 @@ import AppRoutes from "./routes/AppRoutes";
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="flex h-screen w-screen bg-[#1f1f1f] text-white">
+      {/* APP SHELL */}
+      <div className="flex h-screen w-screen bg-[#121212] text-white">
+        {/* SIDEBAR */}
         <Sidebar />
-        <main className="flex-1 overflow-hidden">
+
+        {/* MAIN AREA */}
+        <main className="flex-1 flex flex-col overflow-hidden">
           <AppRoutes />
         </main>
       </div>
