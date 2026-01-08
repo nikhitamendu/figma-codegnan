@@ -1,15 +1,51 @@
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 
 export default function AppLayout({ children }) {
-  return (
-    <div className="flex h-screen w-full bg-[#121212]">
-      {/* Sidebar */}
-      <Sidebar />
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
-      {/* Main Content */}
-      <div className="flex flex-col flex-1 bg-[#121212]">
-        {children}
+  useEffect(() => {
+    const handleResize = () => {
+      const tablet = window.innerWidth < 1024;
+      setIsTablet(tablet);
+
+      if (!tablet) {
+        setSidebarOpen(false); // reset on desktop
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <div className="relative h-screen w-screen overflow-hidden bg-[#121212]">
+      <div className="flex h-full w-full">
+        {/* SIDEBAR */}
+        <Sidebar
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+          isTablet={isTablet}
+        />
+
+        {/* MAIN CONTENT */}
+        <main className="flex-1 h-full overflow-y-auto bg-[#2A2A2A]">
+          {/* 🔥 PASS TOGGLER DOWN */}
+          {typeof children === "function"
+            ? children(() => setSidebarOpen(true))
+            : children}
+        </main>
       </div>
+
+      {/* ===== BLUR OVERLAY ===== */}
+      {isTablet && sidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 z-20 bg-black/40 backdrop-blur-md"
+        />
+      )}
     </div>
   );
 }

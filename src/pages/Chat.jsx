@@ -6,17 +6,15 @@ import ChatInput from "../components/ChatInput";
 import { doc, report, content } from "../assets/icons";
 import avatar from "../assets/avatar.png";
 
-export default function Chat() {
+export default function Chat({ openSidebar }) {
   const [messages, setMessages] = useState([]);
   const [showCards, setShowCards] = useState(true);
 
   const handleSend = (text) => {
     if (!text?.trim()) return;
 
-    setMessages((prev) => [
-      ...prev,
-      { id: Date.now(), text },
-    ]);
+    setMessages((prev) => [...prev, { id: Date.now(), text }]);
+    setShowCards(false);
   };
 
   const handleNewChat = () => {
@@ -25,27 +23,14 @@ export default function Chat() {
   };
 
   return (
-    // ⛔ NO padding / NO background here
-    <section className="flex flex-col flex-1 self-stretch">
-      {/* ================= TOP BAR ================= */}
-      <Topbar onNewChat={handleNewChat} />
+    <section className="min-h-full flex flex-col">
+      <Topbar
+        onMenuClick={openSidebar}  
+        onNewChat={handleNewChat}
+      />
 
-      {/* ================= MAIN CONTENT (THIS gets bg) ================= */}
-      <div
-        className="
-          flex
-          flex-col
-          flex-1
-          self-stretch
-          items-center
-          justify-end
-          px-[30px]
-          bg-[#2A2A2A]
-        "
-      >
-        {/* ================= MIDDLE SECTION ================= */}
-        <div className="flex flex-col items-center gap-[25px] self-stretch">
-          {/* Avatar */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6 bg-[#2A2A2A]">
+        <div className="flex flex-col items-center gap-6 max-w-5xl w-full">
           <div className="w-[140px] h-[140px] rounded-full overflow-hidden shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
             <img
               src={avatar}
@@ -54,22 +39,32 @@ export default function Chat() {
             />
           </div>
 
-          {/* Greeting */}
-          <p className="text-[16px] font-medium tracking-[-0.32px] capitalize text-white/70 text-center self-stretch">
+          <p className="text-[16px] font-medium text-white/70 text-center">
             Good Morning, John
           </p>
 
-          {/* Assistant text */}
-          <h1 className="text-[28px] font-bold tracking-[-0.56px]  text-white text-center self-stretch">
+          <h1 className="text-[28px] font-bold text-white text-center">
             How can I assist you today?
           </h1>
 
-          {/* 42px gap */}
-          <div className="h-[42px]" />
-
-          {/* ================= SUGGESTION CARDS ================= */}
           {showCards && (
-            <div className="flex flex-wrap justify-center items-center content-center gap-6 self-stretch">
+            <div
+              className="
+                grid
+                grid-cols-1
+                md:grid-cols-2
+                lg:grid-cols-3
+                gap-6
+                w-full
+                max-w-5xl
+                mx-auto
+
+                /* center 3rd card on tablet */
+                md:[&>*:nth-child(3)]:col-span-2
+                md:[&>*:nth-child(3)]:justify-self-center
+                lg:[&>*:nth-child(3)]:col-span-1
+              "
+            >
               <SuggestionCard
                 icon={doc}
                 title="Help me to create a personal branding and web page"
@@ -108,26 +103,16 @@ export default function Chat() {
             </div>
           )}
         </div>
-
-        {/* ================= GAP BEFORE CHAT INPUT ================= */}
-        <div className="h-[100px]" />
-
-        {/* ================= CHAT INPUT ================= */}
-        <div className="flex justify-center w-full">
-          <ChatInput onSend={handleSend} />
-        </div>
-
-        {/* ================= GAP BEFORE DISCLAIMER ================= */}
-        <div className="h-[24px]" />
-
-        {/* ================= DISCLAIMER ================= */}
-        <p className="self-stretch text-center text-[14px] font-medium leading-[21px] text-white/70">
-          Centra may display inaccurate info, so please double check the response.{" "}
-          <span className="font-bold text-white underline capitalize cursor-pointer">
-            Your Privacy & Centra AI
-          </span>
-        </p>
       </div>
+
+      <ChatInput onSend={handleSend} />
+
+      <p className="text-center text-[14px] text-white/70 py-4 px-6">
+        Centra may display inaccurate info, so please double check the response.{" "}
+        <span className="font-bold text-white underline cursor-pointer">
+          Your Privacy & Centra AI
+        </span>
+      </p>
     </section>
   );
 }

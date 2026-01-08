@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Chat from "../pages/Chat";
 
-export default function AppRoutes() {
+export default function AppRoutes({openSidebar}) {
   return (
     <Routes>
       {/* DEFAULT ROUTE */}
@@ -22,7 +22,7 @@ export default function AppRoutes() {
       {/* UPGRADE */}
       <Route path="/upgrade" element={<Chat />} />
 
-      {/* 404 (DO NOT reuse Chat here) */}
+      {/* FALLBACK */}
       <Route path="*" element={<Navigate to="/ai-chat" replace />} />
     </Routes>
   );

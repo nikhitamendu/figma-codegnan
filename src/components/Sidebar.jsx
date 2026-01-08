@@ -9,7 +9,7 @@ import videoIcon from "../assets/icons/video.svg";
 import imageIcon from "../assets/icons/image.svg";
 import devIcon from "../assets/icons/dev.svg";
 
-import toggleIcon from "../assets/nav/toggle.png";
+import toggleIcon from "../assets/icons/toggle.png";
 import chatItemIcon from "../assets/nav/chat-item.svg";
 import moreIcon from "../assets/nav/more.svg";
 import upgradeIcon from "../assets/nav/upgrade.svg";
