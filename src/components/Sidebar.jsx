@@ -108,7 +108,7 @@ export default function Sidebar({ isOpen, isTablet, onClose }) {
       {/* ================= FULL SIDEBAR ================= */}
       {/* ================= FULL SIDEBAR ================= */}
 {!showCollapsed && (
-  <div className="flex flex-col w-full h-full p-3 md:p-4 gap-4">
+  <div className="flex flex-col w-full h-full overflow-y-auto p-3 md:p-4 gap-4">
 
     {/* HEADER */}
     <div className="flex items-center justify-between">
