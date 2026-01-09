@@ -25,7 +25,7 @@ export default function Chat({ openSidebar }) {
   };
 
   return (
-    <section className="min-h-full flex flex-col overflow-y-auto">
+    <section className="min-h-screen flex flex-col overflow-y-auto">
       <Topbar
         onMenuClick={openSidebar}
         onNewChat={handleNewChat}

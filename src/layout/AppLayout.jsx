@@ -24,7 +24,7 @@ export default function AppLayout({ children }) {
   }, []);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-[#121212]">
+    <div className="relative h-screen w-screen  bg-[#121212]">
       <div className="flex h-full w-full">
         {/* SIDEBAR */}
         <Sidebar
@@ -34,7 +34,7 @@ export default function AppLayout({ children }) {
         />
 
         {/* MAIN CONTENT */}
-        <main className="flex-1 h-full overflow-y-auto bg-[#2A2A2A]">
+        <main className="flex-1 h-screenoverflow-y-auto bg-[#2A2A2A]">
           {typeof children === "function"
             ? children(() => setSidebarOpen(true))
             : children}
