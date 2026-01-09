@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from "react"; // 👈 REQUIRED
+
 import attachIcon from "../assets/icons/attach.svg";
 import imageUploadIcon from "../assets/icons/image-upload.svg";
 import sendIcon from "../assets/icons/send.svg";
@@ -16,33 +17,18 @@ export default function ChatInput({ onSend }) {
   };
 
   return (
-    <div className="w-full bg-[#2A2A2A] px-4 pb-4">
-     <div
-  className="
-    max-w-5xl
-    mx-auto
-    p-5
-    rounded-xl
-    bg-[#1e1e1e]
-    shadow-[0_-1px_0_rgba(255,255,255,0.04)]
-    flex
-    flex-col
-    gap-5
-  "
->
-
+    <div className="w-full bg-[#2A2A2A] px-2 pb-0 mt-2 sm:px-3 sm:pb-3 md:px-4 md:pb-4">
+      <div className="max-w-5xl mx-auto p-2 sm:p-3 md:p-4 rounded-xl bg-[#1e1e1e] flex flex-col gap-3 sm:gap-4 md:gap-5">
 
         {/* Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <span className="text-[16px] font-semibold text-white/80">
+        <div className="flex items-center justify-between">
+          <span className="text-sm md:text-base font-semibold text-white/80">
             Ask me anything...
           </span>
 
-          <button className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/10">
+          <button className="flex items-center gap-2 px-2 py-1 md:px-3 md:py-1.5 rounded-full border border-white/10 bg-white/10">
             <img src={webIcon} className="w-4 h-4" />
-            <span className="text-[14px] font-bold text-white">
-              All Web
-            </span>
+            <span className="text-sm font-bold text-white">All Web</span>
             <img src={chevronDown} className="w-4 h-4 opacity-80" />
           </button>
         </div>
@@ -52,19 +38,19 @@ export default function ChatInput({ onSend }) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           rows={2}
-          className="w-full resize-none bg-transparent outline-none text-[14px] text-white"
+          className="w-full resize-none bg-transparent outline-none text-sm text-white"
         />
 
         {/* Actions */}
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 text-[14px] text-white/60">
-              <img src={attachIcon} className="w-[18px] h-[18px]" />
+        <div className="flex items-center gap-4">
+          <div className="flex gap-4">
+            <button className="flex items-center gap-2 text-sm text-white/60">
+              <img src={attachIcon} className="w-4 h-4" />
               Add Attachment
             </button>
 
-            <button className="flex items-center gap-2 text-[14px] text-white/60">
-              <img src={imageUploadIcon} className="w-[18px] h-[18px]" />
+            <button className="flex items-center gap-2 text-sm text-white/60">
+              <img src={imageUploadIcon} className="w-4 h-4" />
               Use Image
             </button>
           </div>
@@ -72,7 +58,7 @@ export default function ChatInput({ onSend }) {
           <div className="flex-1" />
 
           <div className="flex items-center gap-3">
-            <span className="text-[14px] text-white/70">
+            <span className="text-sm text-white/70">
               {value.length}/{max}
             </span>
 

@@ -11,9 +11,18 @@ export default function SuggestionCard({
       className="
         group
         w-full
-        max-w-[273px]
-        min-h-[140px]
-        p-5
+        max-w-full
+        sm:max-w-[240px]
+        md:max-w-[273px]
+
+        min-h-[120px]
+        sm:min-h-[130px]
+        md:min-h-[140px]
+
+        p-3
+        sm:p-4
+        md:p-5
+
         rounded-2xl
         border
         border-white/10
@@ -21,7 +30,8 @@ export default function SuggestionCard({
         text-left
         flex
         flex-col
-        gap-4
+        gap-3
+        sm:gap-4
 
         transition-all
         duration-300
@@ -39,8 +49,11 @@ export default function SuggestionCard({
       {/* ICON */}
       <div
         className="
-          w-[36px]
-          h-[36px]
+          w-8
+          h-8
+          sm:w-9
+          sm:h-9
+
           rounded-xl
           flex
           items-center
@@ -54,17 +67,26 @@ export default function SuggestionCard({
           boxShadow: iconShadow,
         }}
       >
-        <img src={icon} className="w-4 h-4" alt="" />
+        <img
+          src={icon}
+          className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+          alt=""
+        />
       </div>
 
       {/* TITLE */}
       <p
         className="
-          text-[14px]
+          text-[13px]
+          sm:text-[14px]
+
           font-medium
-          leading-[21px]
+          leading-[20px]
+          sm:leading-[21px]
+
           text-white/75
           capitalize
+
           transition-colors
           duration-300
           group-hover:text-white

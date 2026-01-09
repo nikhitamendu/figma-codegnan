@@ -8,29 +8,41 @@ export default function Topbar({ onMenuClick, onNewChat }) {
       className="
         flex
         items-center
-        justify-end
+        justify-between
+
         w-full
-        px-6
-        py-4
+        px-3
+        sm:px-4
+        md:px-6
+
+        py-3
+        md:py-4
+
         bg-[#111111]
         border-b
         border-white/10
       "
     >
-      {/* ❌ MENU ICON COMPLETELY HIDDEN ON TABLET */}
-      {/* Only keep logic if needed later for mobile */}
+      {/* MENU (Mobile Only) */}
       <button
         onClick={onMenuClick}
         className="
-          hidden
           lg:hidden
+          flex
+          items-center
+          justify-center
+          w-9
+          h-9
+          rounded-md
+          hover:bg-white/10
+          transition
         "
       >
-        <img src={menu} alt="menu" />
+        <img src={menu} alt="menu" className="w-5 h-5" />
       </button>
 
       {/* RIGHT ACTIONS */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* SuperAI */}
         <SuperAIDropdown />
 
@@ -41,10 +53,16 @@ export default function Topbar({ onMenuClick, onNewChat }) {
             flex
             items-center
             gap-2
-            h-[40px]
-            px-[20px]
+
+            h-9
+            sm:h-[40px]
+
+            px-3
+            sm:px-5
+
             rounded-lg
             bg-white
+
             transition-colors
             hover:bg-[#EBEBEB]
             active:bg-[#E0E0E0]
@@ -53,14 +71,16 @@ export default function Topbar({ onMenuClick, onNewChat }) {
           <img
             src={newChatIcon}
             alt="New Chat"
-            className="w-5 h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5"
           />
 
           <span
             className="
-              text-[14px]
+              text-[13px]
+              sm:text-[14px]
+
               font-bold
-              tracking-[-0.28px]
+              tracking-tight
               capitalize
               text-[#111111]
               whitespace-nowrap

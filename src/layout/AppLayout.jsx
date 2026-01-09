@@ -10,14 +10,17 @@ export default function AppLayout({ children }) {
       const tablet = window.innerWidth < 1024;
       setIsTablet(tablet);
 
+      // Auto close on desktop
       if (!tablet) {
-        setSidebarOpen(false); // reset on desktop
+        setSidebarOpen(false);
       }
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () =>
+      window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -26,24 +29,23 @@ export default function AppLayout({ children }) {
         {/* SIDEBAR */}
         <Sidebar
           isOpen={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
           isTablet={isTablet}
+          onClose={() => setSidebarOpen(false)}
         />
 
         {/* MAIN CONTENT */}
         <main className="flex-1 h-full overflow-y-auto bg-[#2A2A2A]">
-          {/* 🔥 PASS TOGGLER DOWN */}
           {typeof children === "function"
             ? children(() => setSidebarOpen(true))
             : children}
         </main>
       </div>
 
-      {/* ===== BLUR OVERLAY ===== */}
+      {/* OVERLAY (mobile only) */}
       {isTablet && sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}
-          className="fixed inset-0 z-20 bg-black/40 backdrop-blur-md"
+          className="fixed inset-0 z-20 bg-black/40 backdrop-blur-sm"
         />
       )}
     </div>

@@ -7,7 +7,7 @@ export default function SuperAIDropdown() {
 
   return (
     <div className="relative">
-      {/* ================= BUTTON ================= */}
+      {/* BUTTON */}
       <button
         onClick={() => setOpen(!open)}
         className="
@@ -15,28 +15,38 @@ export default function SuperAIDropdown() {
           items-center
           justify-center
           gap-2
-          h-[40px]
-          px-6
-          py-[10px]
+
+          h-9
+          sm:h-[40px]
+
+          px-3
+          sm:px-5
+
+          py-2
           rounded-lg
+
           border
           border-white/10
           bg-white/10
+
+          hover:bg-white/15
+          transition
         "
       >
-        {/* SuperAI icon */}
+        {/* Icon */}
         <img
           src={superAIIcon}
           alt="Super AI"
-          className="w-[13.271px] h-[14.543px] shrink-0 opacity-60"
+          className="w-3.5 h-3.5 sm:w-[13px] sm:h-[14px] opacity-60"
         />
 
         {/* Text */}
         <span
           className="
-            text-[14px]
+            text-[13px]
+            sm:text-[14px]
             font-semibold
-            tracking-[-0.28px]
+            tracking-tight
             capitalize
             text-white
             whitespace-nowrap
@@ -45,14 +55,16 @@ export default function SuperAIDropdown() {
           SuperAI 2.0
         </span>
 
-        {/* Dropdown icon */}
+        {/* Chevron */}
         <img
           src={chevronDown}
           alt="Open"
           className="
-            w-5
-            h-5
-            shrink-0
+            w-4
+            h-4
+            sm:w-5
+            sm:h-5
+
             opacity-60
             transition-transform
             duration-200
@@ -63,14 +75,17 @@ export default function SuperAIDropdown() {
         />
       </button>
 
-      {/* ================= DROPDOWN ================= */}
+      {/* DROPDOWN */}
       {open && (
         <div
           className="
             absolute
             right-0
             mt-2
-            w-40
+
+            w-36
+            sm:w-40
+
             rounded-lg
             border
             border-white/10
@@ -80,16 +95,21 @@ export default function SuperAIDropdown() {
             z-50
           "
         >
-          {["Model A", "Model B", "Model B", "Model C"].map((item) => (
+          {["Model A", "Model B", "Model C"].map((item) => (
             <div
               key={item}
               className="
                 px-4
                 py-2
-                text-sm
+
+                text-[13px]
+                sm:text-sm
+
                 text-white/80
                 cursor-pointer
+
                 hover:bg-white/10
+                transition
               "
             >
               {item}
