@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Topbar from "../components/Topbar";
 import SuggestionCard from "../components/SuggestionCard";
 import ChatInput from "../components/ChatInput";
@@ -7,6 +8,7 @@ import { doc, report, content } from "../assets/icons";
 import avatar from "../assets/avatar.png";
 
 export default function Chat({ openSidebar }) {
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [showCards, setShowCards] = useState(true);
 
@@ -24,10 +26,7 @@ export default function Chat({ openSidebar }) {
 
   return (
     <section className="min-h-full flex flex-col">
-      <Topbar
-        onMenuClick={openSidebar}  
-        onNewChat={handleNewChat}
-      />
+      <Topbar onMenuClick={openSidebar} onNewChat={handleNewChat} />
 
       <div className="flex-1 flex flex-col items-center justify-center px-6 bg-[#2A2A2A]">
         <div className="flex flex-col items-center gap-6 max-w-5xl w-full">
@@ -58,48 +57,41 @@ export default function Chat({ openSidebar }) {
                 w-full
                 max-w-5xl
                 mx-auto
-
-                /* center 3rd card on tablet */
-                md:[&>*:nth-child(3)]:col-span-2
-                md:[&>*:nth-child(3)]:justify-self-center
-                lg:[&>*:nth-child(3)]:col-span-1
               "
             >
+              {/* CARD 1 */}
               <SuggestionCard
                 icon={doc}
                 title="Help me to create a personal branding and web page"
                 onClick={() =>
-                  handleSend(
-                    "Help me to create a personal branding and web page"
-                  )
+                  navigate("ai-chat")
                 }
                 iconBg="#3982F4"
                 iconShadow="-4px -4px 4px rgba(255,255,255,0.15) inset, 4px 4px 4px rgba(255,255,255,0.15) inset"
               />
 
+              {/* CARD 2 */}
               <SuggestionCard
                 icon={report}
                 title="Write a report based on my website data"
                 onClick={() =>
-                  handleSend(
-                    "Write a report based on my website data"
-                  )
-                }
+                  navigate("ai-chat")}
                 iconBg="#BC0E88"
                 iconShadow="-4px -4px 4px rgba(255,255,255,0.15) inset, 4px 4px 4px rgba(255,255,255,0.15) inset"
               />
 
-              <SuggestionCard
-                icon={content}
-                title="Write a tailored, engaging content, with a focus quality"
-                onClick={() =>
-                  handleSend(
-                    "Write a tailored, engaging content, with a focus quality"
-                  )
-                }
-                iconBg="#EB950C"
-                iconShadow="-4px -4px 4px rgba(255,255,255,0.15) inset, 4px 4px 4px rgba(255,255,255,0.15) inset"
-              />
+              {/* CARD 3 — CENTER ONLY ON TABLET */}
+              <div className="md:col-span-2 md:flex md:justify-center lg:col-span-1 lg:block">
+                <SuggestionCard
+                  icon={content}
+                  title="Write a tailored, engaging content, with a focus quality"
+                  onClick={() =>
+                    navigate("ai-chat")
+                  }
+                  iconBg="#EB950C"
+                  iconShadow="-4px -4px 4px rgba(255,255,255,0.15) inset, 4px 4px 4px rgba(255,255,255,0.15) inset"
+                />
+              </div>
             </div>
           )}
         </div>
