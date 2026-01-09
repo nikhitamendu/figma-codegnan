@@ -10,7 +10,6 @@ export default function AppLayout({ children }) {
       const tablet = window.innerWidth < 1024;
       setIsTablet(tablet);
 
-      // Auto close on desktop
       if (!tablet) {
         setSidebarOpen(false);
       }
@@ -24,8 +23,9 @@ export default function AppLayout({ children }) {
   }, []);
 
   return (
-    <div className="relative h-screen w-screen  bg-[#121212]">
-      <div className="flex h-full w-full">
+    <div className="min-h-screen w-screen bg-[#121212]">
+      <div className="flex min-h-screen">
+
         {/* SIDEBAR */}
         <Sidebar
           isOpen={sidebarOpen}
@@ -34,14 +34,14 @@ export default function AppLayout({ children }) {
         />
 
         {/* MAIN CONTENT */}
-        <main className="flex-1 h-screenoverflow-y-auto bg-[#2A2A2A]">
+        <main className="flex-1 overflow-y-auto bg-[#2A2A2A]">
           {typeof children === "function"
             ? children(() => setSidebarOpen(true))
             : children}
         </main>
       </div>
 
-      {/* OVERLAY (mobile only) */}
+      {/* OVERLAY */}
       {isTablet && sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}

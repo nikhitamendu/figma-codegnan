@@ -25,7 +25,7 @@ export default function Chat({ openSidebar }) {
   };
 
   return (
-    <section className="min-h-screen flex flex-col overflow-y-auto">
+    <section className="flex flex-col ">
       <Topbar
         onMenuClick={openSidebar}
         onNewChat={handleNewChat}
@@ -61,11 +61,9 @@ export default function Chat({ openSidebar }) {
               grid-cols-2
              sm:grid-cols-2
               lg:grid-cols-3
-              gap-4
-              sm:gap-4
-              w-full
-              max-w-5xl
-              mx-auto
+              gap-2 sm:gap-4
+              mb-3
+              sm:mb-0
             "
           >
             <SuggestionCard
