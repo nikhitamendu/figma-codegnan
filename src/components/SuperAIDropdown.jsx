@@ -45,6 +45,7 @@ export default function SuperAIDropdown() {
           className="
             text-[13px]
             sm:text-[14px]
+            sm:text-hidden
             font-semibold
             tracking-tight
             capitalize

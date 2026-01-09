@@ -1,6 +1,6 @@
 import SuperAIDropdown from "./SuperAIDropdown";
 import newChatIcon from "../assets/icons/new-chat.svg";
-import { menu } from "../assets/icons";
+import toggleIcon from "../assets/icons/toggle.png";
 
 export default function Topbar({ onMenuClick, onNewChat }) {
   return (
@@ -8,7 +8,7 @@ export default function Topbar({ onMenuClick, onNewChat }) {
       className="
         flex
         items-center
-        justify-between
+        justify-end
 
         w-full
         px-3
@@ -23,11 +23,11 @@ export default function Topbar({ onMenuClick, onNewChat }) {
         border-white/10
       "
     >
-      {/* MENU (Mobile Only) */}
+      {/* TOGGLE (Mobile + Tablet) */}
       <button
         onClick={onMenuClick}
         className="
-          lg:hidden
+         lg:hidden   /* 👈 show on mobile + tablet */
           flex
           items-center
           justify-center
@@ -38,11 +38,15 @@ export default function Topbar({ onMenuClick, onNewChat }) {
           transition
         "
       >
-        <img src={menu} alt="menu" className="w-5 h-5" />
+        <img
+          src={toggleIcon}
+          alt="toggle"
+          className="w-5 h-5"
+        />
       </button>
 
       {/* RIGHT ACTIONS */}
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className=" ml-auto flex items-center gap-2 sm:gap-3">
         {/* SuperAI */}
         <SuperAIDropdown />
 
@@ -78,11 +82,11 @@ export default function Topbar({ onMenuClick, onNewChat }) {
             className="
               text-[13px]
               sm:text-[14px]
-
               font-bold
               tracking-tight
               capitalize
               text-[#111111]
+            
               whitespace-nowrap
             "
           >

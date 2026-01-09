@@ -32,7 +32,7 @@ export default function Chat({ openSidebar }) {
       />
 
       {/* MAIN */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 bg-[#2A2A2A]">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 sm:px-6 gap-2 sm:gap-6 bg-[#2A2A2A]">
         <div className="flex flex-col items-center gap-5 sm:gap-6 max-w-5xl w-full">
 
           {/* Avatar */}
@@ -58,11 +58,11 @@ export default function Chat({ openSidebar }) {
           <div
             className="
               grid
-              grid-cols-1
-              md:grid-cols-2
+              grid-cols-2
+             sm:grid-cols-2
               lg:grid-cols-3
               gap-4
-              sm:gap-6
+              sm:gap-4
               w-full
               max-w-5xl
               mx-auto
@@ -84,7 +84,7 @@ export default function Chat({ openSidebar }) {
               iconShadow="-4px -4px 4px rgba(255,255,255,0.15) inset, 4px 4px 4px rgba(255,255,255,0.15) inset"
             />
 
-            <div className="md:col-span-2 md:flex md:justify-center lg:col-span-1 lg:block">
+            <div className="col-span-2 sm:col-span-1 md:col-span-2 md:flex md:justify-center lg:col-span-1 lg:block">
               <SuggestionCard
                 icon={content}
                 title="Write a tailored, engaging content, with a focus quality"
