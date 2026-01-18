@@ -25,14 +25,16 @@ export default function Chat({ openSidebar }) {
   };
 
   return (
-    <section className="flex flex-col ">
+    <section className="flex flex-col min-h-screen">
       <Topbar
         onMenuClick={openSidebar}
         onNewChat={handleNewChat}
       />
 
       {/* MAIN */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 sm:px-6 gap-2 sm:gap-6 bg-[#2A2A2A]">
+{/* MAIN */}
+<div className="flex-1 overflow-y-auto flex flex-col items-center justify-start px-6 sm:px-6 gap-0 sm:gap-6 bg-[#2A2A2A]">
+
         <div className="flex flex-col items-center gap-5 sm:gap-6 max-w-5xl w-full">
 
           {/* Avatar */}
@@ -54,15 +56,16 @@ export default function Chat({ openSidebar }) {
             How can I assist you today?
           </h1>
 
-          {/* CARDS (ALWAYS VISIBLE) */}
+          {/* CARDS */}
           <div
             className="
               grid
               grid-cols-2
-             sm:grid-cols-2
+              sm:grid-cols-2
               lg:grid-cols-3
               gap-2 sm:gap-4
-              mb-3
+
+              mb-0        /* ✅ mobile */
               sm:mb-0
             "
           >
@@ -95,7 +98,11 @@ export default function Chat({ openSidebar }) {
         </div>
       </div>
 
-      <ChatInput onSend={handleSend} />
+<div className="sticky bottom-0 bg-[#2A2A2A] pt-2">
+  <ChatInput onSend={handleSend} />
+</div>
+
+
 
       <p className="text-center text-xs sm:text-sm text-white/70 py-3 px-4 sm:px-6">
         Centra may display inaccurate info, so please double check the response.{" "}

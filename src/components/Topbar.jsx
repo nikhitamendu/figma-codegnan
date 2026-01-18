@@ -27,7 +27,7 @@ export default function Topbar({ onMenuClick, onNewChat }) {
       <button
         onClick={onMenuClick}
         className="
-         lg:hidden   /* 👈 show on mobile + tablet */
+          lg:hidden
           flex
           items-center
           justify-center
@@ -46,7 +46,7 @@ export default function Topbar({ onMenuClick, onNewChat }) {
       </button>
 
       {/* RIGHT ACTIONS */}
-      <div className=" ml-auto flex items-center gap-2 sm:gap-3">
+      <div className="ml-auto flex items-center gap-2 sm:gap-3">
         {/* SuperAI */}
         <SuperAIDropdown />
 
@@ -78,15 +78,18 @@ export default function Topbar({ onMenuClick, onNewChat }) {
             className="w-4 h-4 sm:w-5 sm:h-5"
           />
 
+          {/* TEXT → hidden ONLY on mobile */}
           <span
             className="
+              hidden sm:block
+
               text-[13px]
               sm:text-[14px]
               font-bold
               tracking-tight
               capitalize
               text-[#111111]
-            
+
               whitespace-nowrap
             "
           >
