@@ -125,13 +125,18 @@ export default function Sidebar({ isOpen, isTablet, onClose }) {
               <div className="flex gap-2">
                 {/* Close button (mobile & tab) */}
                 {isTablet && (
-                  <button
-                    onClick={onClose}
-                    className="w-9 h-8 rounded-lg bg-[#171717]"
-                  >
-                    ✕
-                  </button>
-                )}
+  <button
+    onClick={onClose}
+    className="w-9 h-8 flex items-center justify-center rounded-lg bg-[#171717]"
+  >
+    <img
+      src={toggleIcon}
+      className="w-4 h-4"
+      alt="toggle"
+    />
+  </button>
+)}
+
 
                 {/* Collapse (desktop only) */}
                 {!isTablet && (
